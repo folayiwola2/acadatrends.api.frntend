@@ -1,0 +1,30 @@
+.privacy-container{
+    width: 80%;
+    border-radius: 8px;
+    /* border: 1px solid red; */
+}
+
+.text-title{
+   
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.privacy-container p:nth-child(1){
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.footer-wrap{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+@media (max-width: 767px){
+    .footer-wrap{
+        flex-direction: column;
+    }
+}

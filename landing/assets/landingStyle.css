@@ -1,0 +1,26 @@
+.image-1{
+    background: url(./image1.jpg) no-repeat center center/cover;
+    height: 108vh;
+    
+}
+
+.image-2{
+    background: url(./image2.jpg) no-repeat center center/cover;
+    height: 108vh;
+}
+
+.d-flex{
+    margin-top: 12vh;
+    /* border: 2px solid; */
+    height: 108vh;
+}
+
+/* .navbar-brand{
+    border: 1px solid red;
+    background: url(./logo-acada-black.svg) no-repeat center center/cover;
+} */
+/* 
+style="
+    margin-top: 10vh;
+    height: 100vh;
+" */
