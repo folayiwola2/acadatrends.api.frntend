@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UpdatesntrendsSchema = new Schema({
+const Updates & trendsSchema = new Schema({
 
     title: {
         type: String,
@@ -34,7 +34,7 @@ const UpdatesntrendsSchema = new Schema({
         type: Array,
         default: []
     },
-    updatesntrends_dp: {
+    updates & trends_dp: {
         type: String,
         required: false,
         trim: true
@@ -43,4 +43,4 @@ const UpdatesntrendsSchema = new Schema({
 
 }, { timestamps: true })
 
-module.exports = mongoose.model('Updatesntrends', UpdatesntrendsSchema);
+module.exports = mongoose.model('Updates & trends', Updates & trendsSchema);
