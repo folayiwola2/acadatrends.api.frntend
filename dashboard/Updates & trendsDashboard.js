@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-const NewsDashboard = ({ newsList, buttonStyle }) => {
+const Updates & trendsDashboard = ({ updates & trendsList, buttonStyle }) => {
     return (
         <>
 
@@ -8,9 +8,9 @@ const NewsDashboard = ({ newsList, buttonStyle }) => {
                 <div className="card card-small">
                     <div className="card-header border-bottom">
                         <div className="row" >
-                            <div className="col-md-6"><h6 className="m-0">Top 5 Recent News</h6></div>
+                            <div className="col-md-6"><h6 className="m-0">Top 5 Recent Updates & trends</h6></div>
                             <div className="col-md-6">
-                                <Link to="/view-news">
+                                <Link to="/view-updates & trends">
                                     <button className="btn btn-primary" style={buttonStyle}>
                                         <i className="material-icons" style={{ top: "-4px", fontSize: "15px" }}>visibility</i>
                                     </button>
@@ -30,7 +30,7 @@ const NewsDashboard = ({ newsList, buttonStyle }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {newsList}
+                                {updates & trendsList}
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -51,4 +51,4 @@ const NewsDashboard = ({ newsList, buttonStyle }) => {
     )
 }
 
-export default NewsDashboard
+export default Updates & trendsDashboard
