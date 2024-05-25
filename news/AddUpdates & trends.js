@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Preloader, Placeholder } from "react-preloading-screen";
 import { connect } from "react-redux";
-import { createNews } from "../store/actions/projectActions";
+import { createUpdates & trends } from "../store/actions/projectActions";
 import "../style/signIn.css";
 import swal from "sweetalert";
 
-class AddNews extends Component {
+class AddUpdates & trends extends Component {
   state = {
     title: "",
     category: "",
@@ -42,25 +42,25 @@ class AddNews extends Component {
     e.preventDefault();
 
     this.setState({ isLoading: true });
-    let newsDetails = this.state;
+    let updates & trendsDetails = this.state;
     // return console.log("state", this.state)
-    let title = newsDetails.title,
+    let title = updates & trendsDetails.title,
       category = document.getElementById("category").value,
-      content = newsDetails.content,
+      content = updates & trendsDetails.content,
       author = document.getElementById("author").value,
-      image = newsDetails.image;
+      image = updates & trendsDetails.image;
 
     let obj = { title, category, content, author, image };
     console.log("my obj", obj);
-    await this.props.createNews(obj);
+    await this.props.createupdates & trends(obj);
     let props = this.props;
     console.log("Props status", this.props);
     if (props.status === "Success") {
-      swal("Response", "News Successful Created...", "success");
-      this.props.history.push("/admin/view-news");
+      swal("Response", "Updates & trends Successful Created...", "success");
+      this.props.history.push("/admin/view-updates & trends");
     } else {
       this.setState({ isLoading: false });
-      return swal("Response", "News creation failed...", "error");
+      return swal("Response", "Updates & trends creation failed...", "error");
     }
   };
 
@@ -117,18 +117,18 @@ class AddNews extends Component {
             <br />
             <br />
             <p className="" style={{ textAlign: "center", fontSize: "25px" }}>
-              Create News
+              Create Updates & trends
             </p>
             <br />
             <form className="form-group" onSubmit={this.handleSubmit}>
               <div className="row">
-                <div className="col-md-2">News Title : </div>
+                <div className="col-md-2">Updates & trends Title : </div>
                 <div className="col-md-8">
                   <input
                     type="text"
                     className="form-control"
                     id="title"
-                    placeholder="News Title"
+                    placeholder="Updates & trends Title"
                     onChange={this.handleChange}
                   />
                 </div>
@@ -136,7 +136,7 @@ class AddNews extends Component {
               <br />
               <br />
               <div className="row">
-                <div className="col-md-2"> News Category: </div>
+                <div className="col-md-2"> Updates & trends Category: </div>
                 <div className="col-md-8">
                   <select className="custom-select" id="category">
                     <option>Select Category</option>
@@ -160,23 +160,23 @@ class AddNews extends Component {
               <br />
               <br />
               <div className="row">
-                <div className="col-md-2">News Content : </div>
+                <div className="col-md-2">Updates & trends Content : </div>
                 <div className="col-md-8">
-                  <textarea type="text" wrap="on" className="form-control" id="content" rows="3" placeholder="News Content" onChange={this.handleChange}></textarea>
+                  <textarea type="text" wrap="on" className="form-control" id="content" rows="3" placeholder="Updates & trends Content" onChange={this.handleChange}></textarea>
 
                 </div>
               </div>
               <br />
               <br />
               <div className="row">
-                <div className="col-md-2">News Author : </div>
+                <div className="col-md-2">Updates & trends Author : </div>
                 <div className="col-md-8">
                   <input
                     type="text"
                     className="form-control "
                     disabled={true}
                     id="author"
-                    placeholder="News Author"
+                    placeholder="Updates & trends Author"
                     value={adminName ? adminName : "Loading..."}
                     onChange={this.handleChange}
                   />
@@ -218,10 +218,10 @@ class AddNews extends Component {
                           role="status"
                           aria-hidden="true"
                         />{" "}
-                        Creating News...
+                        Creating Updates & trends...
                       </span>
                     ) : (
-                        "Create News"
+                        "Create Updates & trends"
                       )}
                   </button>
                 </div>
@@ -246,10 +246,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createNews: news => {
+    createNews: updates & trends => {
       return new Promise(resolve => {
         dispatch(
-          createNews(news, res => {
+          createUpdates & trends(updates & trends, res => {
             resolve(res);
           })
         );
@@ -261,4 +261,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddNews);
+)(AddUpdates & trends);
