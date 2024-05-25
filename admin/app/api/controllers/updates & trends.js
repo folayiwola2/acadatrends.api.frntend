@@ -1,4 +1,4 @@
-const updates & trendsModel = require("../models/updatesntrends");
+const updates & trendsModel = require("../models/updates & trends");
 const commentModel = require("../../../../users/app/api/models/comments");
 const likesModel = require("../../../../users/app/api/models/likes");
 const viewsModel = require("../../../../users/app/api/models/views");
