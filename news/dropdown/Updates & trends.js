@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
 
-class News extends Component {
+class Updates & trends extends Component {
 
-    handleViewNews = (e) => {
+    handleViewUpdates & trends = (e) => {
         document.querySelector(".main-sidebar").display = "none"
     }
 
@@ -12,16 +12,16 @@ class News extends Component {
             <ul className="nav flex-column">
 
                 <li className="nav-item" style={{ background: "#f5f5f5" }}>
-                    <NavLink to='/admin/add-news' className="nav-link">
+                    <NavLink to='/admin/add-updates & trends' className="nav-link">
                         <i className="material-icons">note_add</i>
-                        <span>Add  News</span>
+                        <span>Add  Updates & trends</span>
                     </NavLink>
                 </li>
 
                 <li className="nav-item" style={{ background: "#f5f5f5" }} >
                     <NavLink to='/admin/view-news' className="nav-link">
                         <i className="material-icons">note_add</i>
-                        <span>View News</span>
+                        <span>View Updates & trends</span>
                     </NavLink>
                 </li>
 
@@ -33,4 +33,4 @@ class News extends Component {
 
 
 
-export default News
+export default Updates & trends
