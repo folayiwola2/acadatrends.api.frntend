@@ -1,4 +1,4 @@
-const updatesntrendsModel = require("../models/updatesntrends");
+const updates & trendsModel = require("../models/updatesntrends");
 const commentModel = require("../../../../users/app/api/models/comments");
 const likesModel = require("../../../../users/app/api/models/likes");
 const viewsModel = require("../../../../users/app/api/models/views");
@@ -17,12 +17,12 @@ cloudinary.config({
 //     fs.writeFile("./uploads/updatesntrends/" + name, imageFile, "base64", err => {
 //       console.log("name", name);
 //       if (err) return reject(err);
-//       updatesntrendsModel.findByIdAndUpdate(user_id, { [key]: name }, (err, result) => {
+//       updates & trendsModel.findByIdAndUpdate(user_id, { [key]: name }, (err, result) => {
 //         console.log("Results()=>", result);
 //         if (err) return reject(err);
 //         resolve({
 //           status: "Success",
-//           message: `Updatesntrends  successfully got ${name}`,
+//           message: `updates & trends  successfully got ${name}`,
 //           data: result
 //         });
 //       });
@@ -30,16 +30,16 @@ cloudinary.config({
 //   });
 // };
 
-const saveImage = (imageFile, updatesntrends_id, key) => {
+const saveImage = (imageFile, updates & trends_id, key) => {
   console.log("this is my image", imageFile)
   return new Promise((resolve, reject) => {
     cloudinary.uploader.upload(imageFile, function (err, result) {
       console.log("from here", result, err);
       if (err) return err;
-      newsModel.findByIdAndUpdate(updatesntrends_id, { [key]: result.secure_url }, (err, result) => {
+      newsModel.findByIdAndUpdate(updates & trends_id, { [key]: result.secure_url }, (err, result) => {
         // console.log("Result()=>", result)
         if (err) return reject(err);
-        resolve({ status: "Success", message: `Updatesntrends successfully got ${result.secure_url}`, data: result })
+        resolve({ status: "Success", message: `Updates & trends successfully got ${result.secure_url}`, data: result })
       })
     });
 
@@ -49,7 +49,7 @@ const saveImage = (imageFile, updatesntrends_id, key) => {
 module.exports = {
   create: (req, res, next) => {
     const obj = req.body;
-    newsModel.create(
+    updates & trendsModel.create(
       {
         title: obj.title,
         category: obj.category,
@@ -57,7 +57,7 @@ module.exports = {
         author: obj.author
       },
       async (err, result) => {
-        console.log("My updatesntrends", result)
+        console.log("My updates & trends", result)
         if (err) throw err;
 
         let { image } = req.body;
@@ -65,7 +65,7 @@ module.exports = {
 
         if (image) {
           try {
-            await saveImage(image, result._id, "updatesntrends_dp");
+            await saveImage(image, result._id, "updates & trends_dp");
           } catch (error) {
             console.log(error);
           }
@@ -73,38 +73,38 @@ module.exports = {
         res.json({
           status: "Success",
           statuscode: 200,
-          message: "Updatesntrends successfully created!!!",
+          message: "Updates & trends successfully created!!!",
           data: result
         });
       }
     );
   },
   getById: (req, res, next) => {
-    updatesntrendsModel.findById(req.params.updatesntrendsId, (err, result) => {
+    Updates & trendsModel.findById(req.params.updatesntrendsId, (err, result) => {
       console.log(result);
 
       if (err) throw err;
-      else res.json({ status: "Success", statuscode: 200, message: "Updatesntrends found", data: result });
+      else res.json({ status: "Success", statuscode: 200, message: "Updates & trends found", data: result });
     });
   },
   getAll: async (req, res, next) => {
-    let all_updatesntrends = await updatesntrendsModel.find({}).sort({ createdAt: -1});
+    let all_updates & trends = await updates & trendsModel.find({}).sort({ createdAt: -1});
 
-    for (let updatesntrends of all_updatesntrends) {
-      let comment = await commentModel.find({ updatesntrendsId: updatesntrends._id });
-      updatesntrends.comments = comment;
+    for (let updates & trends of all_updates & trends) {
+      let comment = await commentModel.find({ updates & trendsId: updates & trends._id });
+      updates & trends.comments = comment;
 
-      let like = await likesModel.find({ updatesntrendsId: updatesntrends._id });
+      let like = await likesModel.find({ updates & trendsId: updates & trends._id });
       news.likes = like;
 
-      let view = await viewsModel.find({ updatesntrendsId: updatesntrends._id });
-      updatesntrends.views = view;
+      let view = await viewsModel.find({ updates & trendsId: updates & trends._id });
+      updates & trends.views = view;
     }
     res.json({
       status: "Success",
       statuscode: 200,
-      message: "Updatesntrends list found!!!",
-      data: all_updatesntrends.sort({ createdAt: -1 })
+      message: "Updates & trends list found!!!",
+      data: all_updates & trends.sort({ createdAt: -1 })
     });
   },
   getPaginated: async (req, res) => {
@@ -121,26 +121,26 @@ module.exports = {
       createdAt: -1
     }
     // Find some documents
-    updatesntrendsModel.count({}, async (err, totalCount) => {
+    updates & trendsModel.count({}, async (err, totalCount) => {
       if (err) {
         res.json({ status: "error", message: "Error fetching data" })
       }
-      updatesntrendsModel.find({}, {}, query, async (err, all_updatesntrends) => {
+      updates & trends.find({}, {}, query, async (err, all_updatesntrends) => {
 
         // Mongo command to fetch all data from collection.
         if (err) {
           res.json({ status: "error", message: "Error fetching data" })
         } else {
           var totalPages = Math.ceil(totalCount / size)
-          for (let updatesntrends of all_updatesntrends) {
-            let comment = await commentModel.find({ updatesntrendsId: updatesntrends._id });
-            updatesntrends.comments = comment;
+          for (let updates & trends of all_updates & trends) {
+            let comment = await commentModel.find({ updates & trendsId: updates & trends._id });
+            updates & trends.comments = comment;
 
-            let like = await likesModel.find({ updatesntrendsId: updatesntrends._id });
-            updatesntrends.likes = like;
+            let like = await likesModel.find({ updates & trendsId: updates & trends._id });
+            updates & trends.likes = like;
 
-            let view = await viewsModel.find({ updatesntrendsId: updatesntrends._id });
-            updatesntrends.views = view;
+            let view = await viewsModel.find({ updates & trendsId: updates & trends._id });
+            updates & trends.views = view;
           }
           res.json({
             status: "Success",
@@ -148,8 +148,8 @@ module.exports = {
             pages: totalPages,
             size,
             pageNo,
-            message: "All updatesntrends found",
-            data: all_updatesntrends //.sort((a, b) => a.createdAt - b.createdAt)
+            message: "All updates & trends found",
+            data: all_updates & trends //.sort((a, b) => a.createdAt - b.createdAt)
           });
         }
       });
@@ -159,8 +159,8 @@ module.exports = {
   },
   updateById: (req, res, next) => {
     const obj = req.body;
-    updatesntrendsModel.findOneAndUpdate(
-      req.params.updatesntrendsId,
+    updates & trendsModel.findOneAndUpdate(
+      req.params.updates & trendsId,
       {
         title: obj.title,
         category: obj.category,
@@ -178,14 +178,14 @@ module.exports = {
           res.json({
             status: "Success",
             statuscode: 200,
-            message: "Updatesntrends updated successfully!!!",
+            message: "Updates & trends updated successfully!!!",
             data: result
           });
       }
     );
   },
   deleteById: (req, res, next) => {
-    newsModel.findByIdAndRemove(req.params.newsId, (err, result) => {
+    updates & trendsModel.findByIdAndRemove(req.params.updates & trendsId, (err, result) => {
       if (err) {
         if (err) {
           return res.json({
@@ -197,7 +197,7 @@ module.exports = {
       else
         res.json({
           status: "Success",
-          message: "Updatesntrends deleted successfully!!!",
+          message: "updates & trends deleted successfully!!!",
           data: result
         });
     });
@@ -208,8 +208,8 @@ module.exports = {
   createImage: async (req, res, next) => {
     try {
       let imageFile = req.body.image;
-      let updatesntrends_id = req.body.updatesntrendsid;
-      let response = await saveImage(imageFile, updatesntrendsid, "news_dp");
+      let updates & trends_id = req.body.updates & trendsid;
+      let response = await saveImage(imageFile, updates & trendsid, "updates & trends_dp");
       res.json(response);
     } catch (error) {
       console.log(error);
