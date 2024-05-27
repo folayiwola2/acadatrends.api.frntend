@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react'
 import { Preloader, Placeholder } from 'react-preloading-screen';
-// import { updateNews } from '../store/actions/projectActions'
+// import { updateUpdates & trends } from '../store/actions/projectActions'
 import image from '../style/images/avatar.jpg'
 // import { Redirect } from 'react-router-dom';
 // import { connect } from 'react-redux'
@@ -11,9 +11,9 @@ import image from '../style/images/avatar.jpg'
 // import '../style/signIn.css';
 import swal from 'sweetalert'
 
-class EditNews extends Component {
+class EditUpdates & trends extends Component {
 
-    state = { news: [], isLoading: false, title: "", banner: "", content: "", author: "", category: [], isUpdated: false }
+    state = { updates & trends: [], isLoading: false, title: "", banner: "", content: "", author: "", category: [], isUpdated: false }
 
     componentDidMount() {
         let isDev = /localhost/.test(window.location.origin);
@@ -24,11 +24,11 @@ class EditNews extends Component {
 
         fetch(`${base_url}/news/${id}`).then((response) => {
             return response.json()
-        }).then((newsData) => {
+        }).then((updates & trendsData) => {
             console.log(this.props)
-            let data = newsData.data
-            console.log("yes", newsData.data)
-            this.setState({ title: data.title, content: data.content, category: data.category, author: data.author, banner: data.news_dp })
+            let data = updates & trendsData.data
+            console.log("yes", updates & trendsData.data)
+            this.setState({ title: data.title, content: data.content, category: data.category, author: data.author, banner: data.updates & trends_dp })
 
             fetch(`${base_url}/category/`).then((res) => {
                 return res.json();
@@ -59,7 +59,7 @@ class EditNews extends Component {
 
         let obj = { title, category, content, author };
 
-        fetch(`${base_url}/news/${id}`, {
+        fetch(`${base_url}/updates & trends/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -71,7 +71,7 @@ class EditNews extends Component {
                 console.log("Update response", response)
                 if (response.statuscode === 200) {
                     swal("Response", "Successfully updated News", "success");
-                    setTimeout(this.props.history.push('/admin/view-news'), 2000)
+                    setTimeout(this.props.history.push('/admin/view-updates & trends'), 2000)
 
                 } else {
                     return swal("Response", "Update Failed", "failed")
@@ -130,10 +130,10 @@ class EditNews extends Component {
                     </div>
 
                     <div className="container" style={{ background: "white", height: "auto" }}><br /><br />
-                        <p className="" style={{ textAlign: "center", fontSize: "25px" }}>Edit  News</p><br />
+                        <p className="" style={{ textAlign: "center", fontSize: "25px" }}>Edit  Updates & trends</p><br />
                         <form className="form-group" onSubmit={this.handleSubmit}>
                             <div className="row">
-                                <div className="col-md-2">News Title : </div>
+                                <div className="col-md-2">Updates & trends Title : </div>
                                 <div className="col-md-8">
                                     <input type="text" className="form-control" value={state ? state.title : ""} id="title" placeholder="News Title" onChange={this.handleChange} />
                                 </div>
@@ -141,7 +141,7 @@ class EditNews extends Component {
 
 
                             <div className="row">
-                                <div className="col-md-2"> News Category: </div>
+                                <div className="col-md-2"> Updates & trends Category: </div>
                                 <div className="col-md-8">
                                     <select class="form-control">
                                         <option id="category" selected> {state ? state.category : ""}</option>
@@ -150,17 +150,17 @@ class EditNews extends Component {
                                 </div>
                             </div><br /><br />
                             <div className="row">
-                                <div className="col-md-2">News Content : </div>
+                                <div className="col-md-2">Updates & trends Content : </div>
                                 <div className="col-md-8">
-                                    <textarea type="text" wrap="on" className="form-control" value={state ? state.content : ""} id="content" rows="3" placeholder="News Content" onChange={this.handleChange} style={{ height: "30vh" }}></textarea>
+                                    <textarea type="text" wrap="on" className="form-control" value={state ? state.content : ""} id="content" rows="3" placeholder="Updates & trends Content" onChange={this.handleChange} style={{ height: "30vh" }}></textarea>
 
-                                    {/* <input type="text" className="form-control" value={state ? state.content : ""} ref="content" id="content" placeholder="News Content" onChange={this.handleChange} /> */}
+                                    {/* <input type="text" className="form-control" value={state ? state.content : ""} ref="content" id="content" placeholder="Updates & trends Content" onChange={this.handleChange} /> */}
                                 </div>
                             </div><br /><br />
                             <div className="row">
                                 <div className="col-md-2">News Author : </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={state ? state.author : ""} disabled="true" id="author" placeholder="News Author" onChange={this.handleChange} />
+                                    <input type="text" className="form-control" value={state ? state.author : ""} disabled="true" id="author" placeholder="Updates & trends Author" onChange={this.handleChange} />
                                 </div>
                             </div><br /><br />
 
@@ -178,7 +178,7 @@ class EditNews extends Component {
                                 <div className="col-md-2"> </div>
                                 <div className="col-md-8">
                                     <button className={this.state.isLoading ? "mb-2 btn btn-primary mr-2 col-md-12 disabled" : "mb-2 btn btn-primary mr-2 col-md-12"} >
-                                        {this.state.isLoading ? "Updating News..." : "Update News"}
+                                        {this.state.isLoading ? "Updating Updates & trends..." : "Update Updates & trends"}
                                     </button>
                                 </div>
                             </div>
@@ -194,10 +194,10 @@ class EditNews extends Component {
 
 // const mapDispatchToProps = (dispatch) => {
 //     return {
-//         updateNews: (news) => dispatch(updateNews(news))
+//         updateUpdates & trends: (updates & trends) => dispatch(updateupdates & trends(updates & trends))
 //     }
 // }
 
 
-export default EditNews
+export default EditUpdates & trends
 
