@@ -36,7 +36,7 @@ const saveImage = (imageFile, updates & trends_id, key) => {
     cloudinary.uploader.upload(imageFile, function (err, result) {
       console.log("from here", result, err);
       if (err) return err;
-      newsModel.findByIdAndUpdate(updates & trends_id, { [key]: result.secure_url }, (err, result) => {
+      updates & trendsModel.findByIdAndUpdate(updates & trends_id, { [key]: result.secure_url }, (err, result) => {
         // console.log("Result()=>", result)
         if (err) return reject(err);
         resolve({ status: "Success", message: `Updates & trends successfully got ${result.secure_url}`, data: result })
