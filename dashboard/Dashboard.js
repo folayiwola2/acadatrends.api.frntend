@@ -7,7 +7,7 @@ import Moment from "react-moment";
 
 class Dashboard extends Component {
   state = {
-    admin: [], news: [], user: [], category: [], fakedata: [], data: JSON.parse(localStorage.getItem("admin"))
+    admin: [], updates & trends: [], user: [], category: [], fakedata: [], data: JSON.parse(localStorage.getItem("admin"))
   }
   componentWillMount() {
     if (this.state.data === null) {
