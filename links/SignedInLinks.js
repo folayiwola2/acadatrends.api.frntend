@@ -11,16 +11,16 @@ import { withRouter } from 'react-router-dom';
 class SignedInLinks extends Component {
 
   state = {
-    isNews: false, isCategory: false, isRole: false, redirect: false
+    isUpdates & trends: false, isCategory: false, isRole: false, redirect: false
   }
 
-  clickNews = (e) => {
+  clickUpdates & trends = (e) => {
     e.preventDefault()
-    this.setState({ isNews: true })
-    if (this.state.isNews) {
-      this.setState({ isNews: false })
+    this.setState({ isUpdates & trends: true })
+    if (this.state.isUpdates & trends) {
+      this.setState({ isUpdates & trends: false })
     } else {
-      this.setState({ isNews: true })
+      this.setState({ isUpdates & trends: true })
     }
   }
   clickCategory = (e) => {
@@ -62,19 +62,19 @@ class SignedInLinks extends Component {
   render() {
     let state = this.state;
     // let local = localStorage.getItem("admin");
-    let newsLink = state.isNews ? <NewsDropdown /> : null
+    let updates & trendsLink = state.isUpdates & trends ? <Updates & trendsDropdown /> : null
     let catLink = state.isCategory ? <CategoryDropdown /> : null
     let roleLink = state.isRole ? <RoleDropdown /> : null;
     return (
       <ul className="nav flex-column">
 
-        <li className="nav-item" onClick={this.clickNews}>
+        <li className="nav-item" onClick={this.clickUpdates & trends}>
           <Link to="#" className="nav-link ">
             <i className="material-icons">event_note</i>
-            <span> News</span>
+            <span> Updates & trends</span>
           </Link>
         </li>
-        {newsLink}
+        {updates & trendsLink}
 
 
         <li className="nav-item" onClick={this.clickCategory}>
