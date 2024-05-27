@@ -26,11 +26,11 @@ class Dashboard extends Component {
       // console.log("admins", data);
       this.setState({ admin: data })
 
-      fetch(`${base_url}/news/`).then((res) => {
+      fetch(`${base_url}/updates & trends/`).then((res) => {
         return res.json();
       }).then((data) => {
-        // console.log("News", data); 
-        this.setState({ news: data });
+        // console.log("Updates & trends", data); 
+        this.setState({ updates & trends: data });
 
         fetch(`${base_url}/category/`).then((res) => {
           return res.json();
@@ -49,15 +49,15 @@ class Dashboard extends Component {
   }
 
   handleEdit = (e) => {
-    this.props.history.push(`/admin/edit-news/${e.target.id}`)
+    this.props.history.push(`/admin/edit-updates & trends/${e.target.id}`)
   }
 
 
   render() {
-    let adminData = this.state.admin, newsData = this.state.news, userData = this.state.user, categoryData = this.state.category;
+    let adminData = this.state.admin, updates & trendsData = this.state.updates & trends, userData = this.state.user, categoryData = this.state.category;
 
     let adminLength = adminData.data ? adminData.data.length : 0;
-    let newsLength = newsData.data ? newsData.data.length : 0;
+    let updates & trendsLength = updates & trendsData.data ? updates & trendsData.data.length : 0;
     let userLength = userData.data ? userData.data.length : 0;
     let categoryLength = categoryData.data ? categoryData.data.length : 0;
 
@@ -93,13 +93,13 @@ class Dashboard extends Component {
     ) : (
         <tr className="text-center"><td>No data to show</td></tr>
       )
-    let newsList = newsData.data ? (
-      newsData.data.slice(0, 5).reverse().map((o, i) => {
+    let updates & trendsList = updates & trendsData.data ? (
+      updates & trendsData.data.slice(0, 5).reverse().map((o, i) => {
         return (
           <tr key={o._id}>
             <td style={{ width: "10%" }}>
-              <img className="db-news-pic" alt="Some imgs" onClick={this.handleEdit} id={o._id}
-                src={o.news_dp === undefined ? image : o.news_dp} style={{ height: "60px", cursor: 'pointer' }} /></td>
+              <img className="db-updates & trends-pic" alt="Some imgs" onClick={this.handleEdit} id={o._id}
+                src={o.updates & trends_dp === undefined ? image : o.updates & trends_dp} style={{ height: "60px", cursor: 'pointer' }} /></td>
             <td style={{ width: "25%" }}>{o.title}</td>
             <td>{o.category}</td>
             <td style={{ width: "40%" }}>{o.content.slice(0, 200)} <span className="font-weight-bolder" onClick={this.handleEdit} id={o._id} style={{ cursor: "pointer" }}>Read more...</span></td>
@@ -143,7 +143,7 @@ class Dashboard extends Component {
                   <NavLink to="/admin/login" style={{ cursor: "pointer" }}>
                     <div className="stats-small__data text-center">
                       <span className="stats-small__label text-uppercase">News</span>
-                      <h6 className="stats-small__value count my-3">{newsLength}</h6>
+                      <h6 className="stats-small__value count my-3">{updates & trendsLength}</h6>
                     </div>
                     <div className="stats-small__data">
                       {/* <span className="stats-small__percentage stats-small__percentage--increase">4.7%</span> */}
@@ -372,7 +372,7 @@ class Dashboard extends Component {
                 <div className="row" >
                   <div className="col-md-6"><h6 className="m-0">Recent News</h6></div>
                   <div className="col-md-6">
-                    <Link to="/admin/view-news">
+                    <Link to="/admin/view-updates & trends">
                       <button className="btn btn-primary" style={buttonStyle}>
                         <i className="material-icons" style={{ top: "-4px", fontSize: "15px" }}>visibility</i>
                       </button>
@@ -392,7 +392,7 @@ class Dashboard extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {newsList}
+                    {updates & trendsList}
                   </tbody>
                   <tfoot>
                     <tr>
