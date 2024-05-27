@@ -2,9 +2,9 @@
 import React, { Component } from 'react'
 import { Preloader, Placeholder } from 'react-preloading-screen';
 import { connect } from "react-redux";
-import { getNews } from "../store/actions/projectActions";
+import { getUpdates & trends } from "../store/actions/projectActions";
 import '../style/datatable.css'
-import '../style/news.css'
+import '../style/updates & trends.css'
 import swal from 'sweetalert';
 import Moment from "react-moment";
 import image from '../style/images/avatar.jpg'
@@ -14,14 +14,14 @@ $.DataTable = require("datatables.net")
 let isDev = /localhost/.test(window.location.origin);
 let base_url = isDev ? "http://localhost:4000/api" : "http://www.acadatrends.com/api"
 
-class ViewNews extends Component {
+class ViewUpdates & trends extends Component {
 
-  state = { news: [], isLoading: false, isEdit: false }
+  state = { updates & trends: [], isLoading: false, isEdit: false }
 
   componentDidMount() {
     console.log("yea", document.querySelector(".main-sidebar"))
     // document.querySelector(".main-sidebar").style.display = "none"
-    this.fetchNews()
+    this.fetchupdates & trends()
     // let x = document.querySelectorAll("select")[0]; x.className = 'form-control';
   }
 
@@ -29,22 +29,22 @@ class ViewNews extends Component {
   //   let _data = await this.props.getNews();
   //   console.log("_data", _data)
   //   let { data } = _data.response;
-  //   this.setState({ news: data.length ? data : null });
+  //   this.setState({ updates & trends: data.length ? data : null });
   // }
 
-  fetchNews = async () => {
-    fetch(`${base_url}/news/`).then((response) => {
+  fetchUpdates & trends = async () => {
+    fetch(`${base_url}/updates & trends/`).then((response) => {
       return response.json()
-    }).then((newsData) => {
-      console.log("yes", newsData.data)
-      this.setState({ news: newsData.data.length ? newsData.data.reverse() : null });
+    }).then((updates & trendsData) => {
+      console.log("yes", updates & trendsData.data)
+      this.setState({ updates & trends: updates & trendsData.data.length ? updates & trendsData.data.reverse() : null });
       $("#example").DataTable()
     })
 
   }
 
   handleEdit = (e) => {
-    this.props.history.push(`/admin/edit-news/${e.target.id}`)
+    this.props.history.push(`/admin/edit-updates & trends/${e.target.id}`)
   }
 
   handleDelete = (e) => {
@@ -61,7 +61,7 @@ class ViewNews extends Component {
         if (willDelete) {
           console.log("Will delete")
 
-          fetch(`${base_url}/news/${id}`, {
+          fetch(`${base_url}/updates & trends/${id}`, {
             method: "DELETE",
             cache: "no-cache",
             headers: {
@@ -72,10 +72,10 @@ class ViewNews extends Component {
             res.json()
           }).then((data) => {
             console.log("data", data)
-            swal("Response", "News successfully deleted", {
+            swal("Response", "Updates & trends successfully deleted", {
               icon: "success"
             });
-            this.fetchNews()
+            this.fetchUpdates & trends()
           })
 
         } else {
@@ -88,16 +88,16 @@ class ViewNews extends Component {
     if (this.state.isEdit) {
 
     }
-    const mydata = this.state.news;
-    console.log(this.state.news)
-    let newsList = mydata ? (
+    const mydata = this.state.updates & trends;
+    console.log(this.state.updates & trends)
+    let updates & trendsList = mydata ? (
       mydata.map((o, i) => {
         return (
           <tr key={o._id}>
             <td>{i + 1}</td>
             <td style={{ width: "10%" }}>
 
-              <img className="news-pic" src={o.news_dp === undefined ? image : o.news_dp} alt="news pic"
+              <img className="updates & trends-pic" src={o.updates & trends_dp === undefined ? image : o.updates & trends_dp} alt="updates & trends pic"
                 style={{ height: "60px" }} />
             </td>
             <td>{o.author}</td>
@@ -126,7 +126,7 @@ class ViewNews extends Component {
             <table id="example" class="table table-striped table-bordered table-hover" width="100%" style={{ overflow: "auto" }}>
               <thead>
                 <tr>
-                  <th>S/n</th>
+                  <th>s/n</th>
                   <th>Image</th>
                   <th>Author</th>
                   <th>Title</th>
@@ -137,7 +137,7 @@ class ViewNews extends Component {
               </thead>
 
               <tbody>
-                {newsList}
+                {Updates & trendsList}
               </tbody>
             </table>
           </div>
@@ -160,10 +160,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getNews() {
+    getUpdates & trends() {
       return new Promise(resolve => {
         dispatch(
-          getNews(res => {
+          getUpdates & trends(res => {
             $("#example").DataTable();
             resolve(res)
 
@@ -176,4 +176,4 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(
   mapStateToProps, mapDispatchToProps
-)(ViewNews);
+)(ViewUpdates & trends);
