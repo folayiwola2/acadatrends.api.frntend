@@ -46,7 +46,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 //Public route
 app.use("/api/admin", admin);
 app.use("/api/user", user);
-app.use("/api/news", news);
+app.use("/api/updates & trends", updates & trends);
 app.use("/api/dp", admin);
 app.use("/api/category", category);
 app.use("/api/comments", comments);
@@ -70,14 +70,14 @@ app.get("/api/uploads/user/:imgName", (req, res) => {
   res.sendFile(path.join(__dirname + req.path));
 });
 
-app.get("/api/uploads/news/:imgName", (req, res) => {
+app.get("/api/uploads/updates & trends/:imgName", (req, res) => {
   console.log("My image path is", req.path);
   res.sendFile(path.join(__dirname + req.path));
 });
 
 //  ========   PRIVATE ROUTES  ==========
 
-app.use("/api/admin/news", validateUser, news);
+app.use("/api/admin/updates & trends", validateUser, updates & trends);
 app.use("/api/admin/category", validateUser, category);
 app.use("api/users/comments", validateUser, comments);
 app.use("/api/users/reply-comments", validateUser, replyComments);
