@@ -13,7 +13,7 @@ class Scroll extends Component {
 
 
     fetchData = async (page) => {
-        fetch(`http://localhost:4000/api/news?pageNo=${page}&size=20`).then(res => {
+        fetch(`http://localhost:4000/api/updates & trends?pageNo=${page}&size=20`).then(res => {
             res.json()
         }).then(data => {
             console.log(data)
@@ -21,8 +21,8 @@ class Scroll extends Component {
     }
 
     render() {
-        let { news } = this.state;
-        let items = news && news.map((res, i) => {
+        let { updates & trends } = this.state;
+        let items = updates & trends && updates & trends.map((res, i) => {
             return (
                 <div>i</div>
             )
@@ -59,10 +59,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getNews() {
+        getUpdates & trends() {
             return new Promise(resolve => {
                 dispatch(
-                    getNews(res => {
+                    getUpdates & trends(res => {
                         resolve(res)
 
                     })
