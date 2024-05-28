@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import ViewNews from '../news/ViewNews';
+// import ViewUpdates & trends from '../updates & trends/ViewUpdates & trends';
 import Datatable from 'react-bs-datatable'; // Import this package
 import moment from 'moment'; // Example for onSort prop
 import bootstrap from 'bootstrap';
@@ -30,7 +30,7 @@ const header = [
 
 
 
- class ViewNews extends Component {
+ class ViewUpdates & trends extends Component {
     state = {fakedata: ""}
     componentDidMount(){
         fetch(`https://jsonplaceholder.typicode.com/posts`).then((res)=>{
@@ -80,4 +80,4 @@ const header = [
 }
 
 
-export default ViewNews
+export default ViewUpdates & trends
