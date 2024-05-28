@@ -184,7 +184,7 @@ $.DataTable = require("datatables.net")
 
 class ViewNews extends Component {
 
-  state = { news: [], isLoading: false, isEdit: false }
+  state = { updates & trends: [], isLoading: false, isEdit: false }
 
   componentDidMount() {
     $("#example").DataTable();
@@ -194,10 +194,10 @@ class ViewNews extends Component {
 
   fetchData = async () => {
     $("#example").DataTable();
-    let _data = await this.props.getNews()
+    let _data = await this.props.getUpdates & trends()
     console.log("_data", _data)
     let { data } = _data.response;
-    this.setState({ news: data.length ? data : null });
+    this.setState({ updates & trends: data.length ? data : null });
   }
 
   handleEdit = (e) => {
@@ -205,7 +205,7 @@ class ViewNews extends Component {
     // console.log(e.target.id)
     // this.setState({ isEdit: true })
     // console.log("Got here", e.target)
-    this.props.history.push(`/edit-news/${e.target.id}`)
+    this.props.history.push(`/edit-updates & trends/${e.target.id}`)
   }
 
   handleDelete = (e) => {
@@ -224,7 +224,7 @@ class ViewNews extends Component {
     })
       .then((willDelete) => {
         if (willDelete) {
-          fetch(`${base_url}/news/${id}`, {
+          fetch(`${base_url}/updates & trends/${id}`, {
             method: "DELETE",
             headers: {
               'Content-type': "application/json"
@@ -236,7 +236,7 @@ class ViewNews extends Component {
             swal("File successfully deleted", {
               icon: "success"
             });
-            this.props.history.push(`/view-news/`)
+            this.props.history.push(`/view-Updates & trends/`)
           })
 
         }
@@ -250,9 +250,9 @@ class ViewNews extends Component {
 
     }
     // console.log("render", this.state)
-    const mydata = this.state.news;
+    const mydata = this.state.updates & trends;
     // console.log("tunde", mydata)
-    // console.log(this.state.news)
+    // console.log(this.state.updates & trends)
     let newsList = mydata ? (
       mydata.map((o, i) => {
         // console.log("my data", o);
@@ -315,10 +315,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getNews() {
+    getUpdates & trends() {
       return new Promise(resolve => {
         dispatch(
-          getNews(res => {
+          getUpdates & trends(res => {
             resolve(res);
           })
         );
@@ -329,4 +329,4 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(
   mapStateToProps, mapDispatchToProps
-)(ViewNews);
+)(ViewUpdates & trends);
