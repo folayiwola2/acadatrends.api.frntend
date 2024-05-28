@@ -6,16 +6,16 @@ $.DataTable = require("datatables.net")
 
 class Table extends Component {
 
-    state = { news: [], isLoading: false }
+    state = { updates & trends: [], isLoading: false }
 
     componentDidMount() {
 
 
-        fetch(`http://localhost:4000/news/`).then((response) => {
+        fetch(`http://localhost:4000/updates & trends/`).then((response) => {
             return response.json()
-        }).then((newsData) => {
-            console.log("yes", newsData.data)
-            this.setState({ news: newsData.data.length ? newsData.data : null })
+        }).then((updates & trendsData) => {
+            console.log("yes", updates & trendsData.data)
+            this.setState({ updates & trends: updates & trendsData.data.length ? updates & trendsData.data : null })
         })
         $('#example').DataTable();
 
