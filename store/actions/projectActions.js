@@ -1,16 +1,16 @@
 import { get, post } from '../../../config/apiRequest'
 
 
-export const createNews = (credentials, cb) => {
+export const createUpdates & trends = (credentials, cb) => {
     return (dispatch, getState) => {
-        post(`/news`, credentials).then((response) => {
-            console.log("Create news reponse ()=>", response);
+        post(`/updates & trends`, credentials).then((response) => {
+            console.log("Create updates & trends reponse ()=>", response);
             if (response.status === "Success") {
-                dispatch({ type: "CREATE_NEWS_SUCCESS", response });
-                if (typeof cb === "function") cb({ type: "CREATE_NEWS_SUCCESS", response });
-                localStorage.setItem('news', JSON.stringify(response.data));
+                dispatch({ type: "CREATE_Updates & trends_SUCCESS", response });
+                if (typeof cb === "function") cb({ type: "CREATE_Updates & trends_SUCCESS", response });
+                localStorage.setItem('updates & trends', JSON.stringify(response.data));
             } else {
-                dispatch({ type: "CREATE_NEWS_ERROR", response });
+                dispatch({ type: "CREATE_Updates & trends_ERROR", response });
                 if (typeof cb === "function") cb();
             }
         })
@@ -33,15 +33,15 @@ export const createQuestions = (credentials, cb) => {
 }
 
 
-export const getNews = (cb) => {
+export const getUpdates & trends = (cb) => {
     return (dispatch) => {
-        get('/news').then(response => {
-            console.log("MY new News is here", response);
+        get('/updates & trends').then(response => {
+            console.log("MY new Updates & trends is here", response);
             if (response.statuscode === 200) {
-                dispatch({ type: "FETCH_NEWS_RESPONSE", response });
-                if (typeof cb === "function") cb({ type: "FETCH_NEWS_RESPONSE", response });
+                dispatch({ type: "FETCH_Updates & trends_RESPONSE", response });
+                if (typeof cb === "function") cb({ type: "FETCH_Updates & trends_RESPONSE", response });
             } else {
-                dispatch({ type: "FETCH_NEWS_RESPONSE", response });
+                dispatch({ type: "FETCH_Updates & trends_RESPONSE", response });
                 if (typeof cb === "function") cb();
             }
         })
