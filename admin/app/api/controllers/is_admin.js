@@ -35,7 +35,7 @@ module.exports = {
         let isEmail = data.some(o => o.email === email);
         // console.log(firstname, othernames, email, phone, password)
         if (firstname === undefined || othernames === undefined || email === undefined || phone === undefined || password === undefined) {
-            return res.json({ status: "error", message: "Missen Feild, please check and try again." });
+            return res.json({ status: "error", message: "Missing Feild, please check and try again." });
         } else if (isEmail) {
             return res.json({ status: "error", message: `This email ${email} already exist, please check and try again.` });
         } else {
